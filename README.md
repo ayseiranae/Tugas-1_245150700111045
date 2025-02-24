@@ -1,2 +1,2 @@
 # Tugas 1_245150700111045
-# Link Video: "sabar bentar bang, masih kejebak hujan di junction"
+# Link Video: https://drive.google.com/file/d/1lUlYXAnNVTBVgHV25iBzAGFQiW0A-5pY/view?usp=sharing
