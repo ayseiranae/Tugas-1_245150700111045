@@ -63,7 +63,19 @@ class Tiket {
         System.out.print(String.format("%-" + separator + "s: %" + (width - separator - 2) + "s\n", label, value));
     }
 
+    void center(String text) {
+        int tengah = (50 - text.length()) / 2;        
+        for (int i = 0; i < tengah; i++) {
+            System.out.print(" ");
+        }        
+        System.out.println(text);
+    }
+
     void tampilkanInfo() {
+        System.out.println();
+        System.out.println("__________________________________________________");
+        System.out.println();
+        center("Nadiha's Cinema");
         System.out.println("__________________________________________________");
         justify("Nomor Tiket ", Integer.toString(nomorTiket));
         justify("Time", tanggalWaktu);
@@ -73,7 +85,12 @@ class Tiket {
         justify("Jam Tayang ", film.jamTayang);
         justify("Studio ", Integer.toString(studio.nomorStudio));
         justify("Nomor Kursi ", Integer.toString(nomorKursi));
-        justify("Harga Tiket ", Integer.toString(film.hargaTiket));
+        justify("Harga Tiket ", String.format("Rp %,d", film.hargaTiket));
         System.out.println("__________________________________________________");
+        center("Selamat Menonton!");
+        center("Terima Kasih");
+        System.out.println("__________________________________________________");
+        System.out.println();
+        center("(CUT HERE)");
     }
 }
