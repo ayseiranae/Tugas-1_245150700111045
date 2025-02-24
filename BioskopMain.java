@@ -5,9 +5,9 @@ public class BioskopMain {
         Scanner sc = new Scanner(System.in);
 
         Film[] films = new Film[3];
-        films[0] = new Film("Attack on Titan: The Last Attack", "Animation", "14:00", 40000);
-        films[1] = new Film("You Are the Apple of My Eye", "Drama, Romance", "22:00", 50000);
-        films[2] = new Film("Cleaner", "Thriller, Action", "20:00", 45000);
+        films[0] = new Film("Attack on Titan: The Last Attack", "Animation", "14:00", 40000, 50);
+        films[1] = new Film("You Are the Apple of My Eye", "Drama, Romance", "22:00", 50000, 50);
+        films[2] = new Film("Cleaner", "Thriller, Action", "20:00", 45000, 50);
 
         Studio[] studios = new Studio[3];
         studios[0] = new Studio(1, 50, films[0]);
@@ -33,7 +33,21 @@ public class BioskopMain {
             sc.nextLine();
 
             System.out.print("Masukkan nomor kursi (1-50): ");
-            int nomorKursi = sc.nextInt();
+            int nomorKursi;
+            while (true) {
+                System.out.print("Masukkan nomor kursi: ");
+                nomorKursi = sc.nextInt();
+                sc.nextLine();
+                
+                if (nomorKursi < 1 || nomorKursi > studios[filmPilihan].kapasitasKursi) {
+                    System.out.println("Nomor kursi tidak valid. Silakan pilih nomor yang sesuai.");
+                } else if (films[filmPilihan].kursiTerisi[nomorKursi]) {
+                    System.out.println("Kursi ini sudah dipesan! Silakan pilih kursi lain.");
+                } else {
+                    films[filmPilihan].kursiTerisi[nomorKursi] = true;
+                    break;
+                }
+            }
             sc.nextLine();
 
             tiketList[i] = new Tiket(i + 101, films[filmPilihan], studios[filmPilihan], nomorKursi, penonton);
