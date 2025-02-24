@@ -6,12 +6,14 @@ class Film {
     String genre;
     String jamTayang;
     int hargaTiket;
+    boolean[] kursiTerisi;
 
-    Film(String judul, String genre, String jamTayang, int hargaTiket) {
+    Film(String judul, String genre, String jamTayang, int hargaTiket, int kapasitas) {
         this.judul = judul;
         this.genre = genre;
         this.jamTayang = jamTayang;
         this.hargaTiket = hargaTiket;
+        this.kursiTerisi = new boolean[kapasitas + 1];
     }
 }
 
