@@ -32,12 +32,10 @@ public class BioskopMain {
             int filmPilihan = sc.nextInt() - 1;
             sc.nextLine();
 
-            System.out.print("Masukkan nomor kursi (1-50): ");
             int nomorKursi;
             while (true) {
-                System.out.print("Masukkan nomor kursi: ");
+                System.out.print("Masukkan nomor kursi (1-50): ");
                 nomorKursi = sc.nextInt();
-                sc.nextLine();
                 
                 if (nomorKursi < 1 || nomorKursi > studios[filmPilihan].kapasitasKursi) {
                     System.out.println("Nomor kursi tidak valid. Silakan pilih nomor yang sesuai.");
