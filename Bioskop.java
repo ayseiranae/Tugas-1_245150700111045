@@ -4,16 +4,16 @@ import java.time.format.DateTimeFormatter;
 class Film {
     String judul;
     String genre;
-    String jamTayang;
+    String[] jamTayang;
     int hargaTiket;
-    boolean[] kursiTerisi;
+    boolean[][] kursiTerisi;
 
-    Film(String judul, String genre, String jamTayang, int hargaTiket, int kapasitas) {
+    Film(String judul, String genre, String[] jamTayang, int hargaTiket, int kapasitas) {
         this.judul = judul;
         this.genre = genre;
         this.jamTayang = jamTayang;
         this.hargaTiket = hargaTiket;
-        this.kursiTerisi = new boolean[kapasitas + 1];
+        this.kursiTerisi = new boolean[jamTayang.length][kapasitas + 1];
     }
 }
 
@@ -42,19 +42,20 @@ class Tiket {
     Film film;
     Studio studio;
     int nomorKursi;
+    int jamIndex;
     Penonton penonton;
     String tanggalWaktu;
     
-        Tiket(int nomorTiket, Film film, Studio studio, int nomorKursi, Penonton penonton) {
-            this.nomorTiket = nomorTiket;
-            this.film = film;
-            this.studio = studio;
-            this.nomorKursi = nomorKursi;
-            this.penonton = penonton;
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
-            this.tanggalWaktu = now.format(formatter);
-
+    Tiket(int nomorTiket, Film film, Studio studio, int nomorKursi, int jamIndex, Penonton penonton) {
+        this.nomorTiket = nomorTiket;
+        this.film = film;
+        this.studio = studio;
+        this.nomorKursi = nomorKursi;
+        this.jamIndex = jamIndex;
+        this.penonton = penonton;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
+        this.tanggalWaktu = now.format(formatter);
     }
 
     void justify(String label, String value) {
@@ -82,7 +83,7 @@ class Tiket {
         justify("Nama Penonton ", penonton.nama);
         justify("Film ", film.judul);
         justify("Genre ", film.genre);
-        justify("Jam Tayang ", film.jamTayang);
+        justify("Jam Tayang ", film.jamTayang[jamIndex]);
         justify("Studio ", Integer.toString(studio.nomorStudio));
         justify("Nomor Kursi ", Integer.toString(nomorKursi));
         justify("Harga Tiket ", String.format("Rp %,d", film.hargaTiket));
